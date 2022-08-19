@@ -1,0 +1,37 @@
+﻿@using BlazorWasmWIndowsAuth.Client.Core.Services
+@using BlazorWasmWIndowsAuth.Shared
+@using Microsoft.AspNetCore.Components.Authorization
+@inherits LayoutComponentBase
+@inject UserService us
+@inject AuthenticationStateProvider asp
+
+
+<AuthorizeView>
+    <Authorized>
+        <div class="page">
+            <div class="sidebar">
+                <NavMenu />
+            </div>
+
+            <main>
+                <div class="top-row px-4">
+                    @if (us.UserModel?.Login != null)
+                    {
+                        <span>You are logged in as : @us.UserModel.Login</span>
+                    }  
+                <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+                </div>
+               
+                <article class="content px-4">
+                    @Body
+                </article>
+            </main>
+        </div>
+    </Authorized>
+    <Authorizing>
+        <h1>Authorizing......</h1>
+    </Authorizing>
+    <NotAuthorized>
+        <h1>You are not authorized !</h1>
+    </NotAuthorized>
+</AuthorizeView>
