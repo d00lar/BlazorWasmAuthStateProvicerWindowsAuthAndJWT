@@ -21,12 +21,12 @@ builder.Services.AddAuthentication((options) =>
 {
     options.TokenValidationParameters = new TokenValidationParameters
     {
-        ValidateAudience = false,
-        ValidateIssuer = false,
+        ValidateAudience = true,
+        ValidateIssuer = true,
         ValidIssuer = builder.Configuration["JWT:Issuer"],
         ValidAudience = builder.Configuration["JWT:Issuer"],
         ValidateLifetime = true,
-        ValidateIssuerSigningKey = false,
+        ValidateIssuerSigningKey = true,
         IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"]))
     };
 }).AddNegotiate();

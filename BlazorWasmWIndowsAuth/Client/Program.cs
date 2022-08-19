@@ -23,12 +23,11 @@ builder.Services.AddHttpClient<UserServiceClient>((serviceProvider, client) => {
     client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress);
 });
 
-builder.Services.AddScoped<CustomAuthorizationMessageHandler>();
 
-builder.Services.AddHttpClient<IHttpService, HttpService>((serviceProvider, client) => {
+builder.Services.AddHttpClient<IHttpService, HttpService>((serviceProvider, client) =>
+{
     client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress);
-
-}).AddHttpMessageHandler<CustomAuthorizationMessageHandler>();
+});
 
 
 

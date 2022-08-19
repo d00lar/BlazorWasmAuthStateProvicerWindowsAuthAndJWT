@@ -61,10 +61,9 @@ namespace BlazorWasmWIndowsAuth.Client.Core.HttpClients
         private async Task<T> sendRequest<T>(HttpRequestMessage request, CancellationToken token = default)
         {
 
-            //var jwt = _sls.GetItem<string>("JWT");
-            //if (jwt != null)
-            //    request!.Headers.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
-            //can be done here but better with msg handler.
+            var jwt = _sls.GetItem<string>("JWT");
+            if (jwt != null)
+                request!.Headers.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
 
             using var response = await _httpClient.SendAsync(request, token);
 
