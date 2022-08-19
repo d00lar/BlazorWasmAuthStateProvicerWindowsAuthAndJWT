@@ -10,7 +10,6 @@ namespace BlazorWasmWIndowsAuth.Client.Core.Services
     {
         private readonly UserServiceClient _usc;
         private readonly ISyncLocalStorageService _sls;
-        private readonly IAccessTokenProvider _accessTokenProvider;
 
         public ClaimsPrincipal User { get; set; } = new(new ClaimsIdentity());
 
